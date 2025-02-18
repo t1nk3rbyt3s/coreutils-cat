@@ -7,6 +7,16 @@ use std::{
 fn main() -> io::Result<()> {
     let args: Vec<_> = args().collect();
 
+    if args.len() < 2 {
+        let mut buf = String::new();
+
+        loop {
+            let _ = io::stdin().read_line(&mut buf);
+
+            println!("{buf}");
+        }
+    }
+
     let buf = &args[1];
 
     let file: File = File::open(buf).unwrap();
